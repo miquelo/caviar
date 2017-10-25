@@ -1,0 +1,508 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>caviar.engine.management &mdash; CAVIAR 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CAVIAR 0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Library modules" href="modules.html"/>
+        <link rel="next" title="caviar.engine.nodealloc" href="modules.engine.nodealloc.html"/>
+        <link rel="prev" title="caviar.engine.lb" href="modules.engine.lb.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CAVIAR
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../gstarted/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="interfaces.html">Involved interfaces</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html">Library modules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="modules.domain.html">caviar.domain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.domain.cluster.html">caviar.domain.cluster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.domain.instance.html">caviar.domain.instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.domain.node.html">caviar.domain.node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.engine.html">caviar.engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.engine.asadmin.html">caviar.engine.asadmin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.engine.lb.html">caviar.engine.lb</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">caviar.engine.management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.engine.nodealloc.html">caviar.engine.nodealloc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.network.html">caviar.network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.network.http.html">caviar.network.http</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.network.ssh.html">caviar.network.ssh</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ssh.html">SSH providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="machinery.html">Machinery providers</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CAVIAR</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Reference documentation</a> &raquo;</li>
+        
+          <li><a href="modules.html">Library modules</a> &raquo;</li>
+        
+      <li>caviar.engine.management</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/reference/modules.engine.management.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-caviar.engine.management">
+<span id="caviar-engine-management"></span><h1>caviar.engine.management<a class="headerlink" href="#module-caviar.engine.management" title="Permalink to this headline">¶</a></h1>
+<p>Management module.</p>
+<dl class="exception">
+<dt id="caviar.engine.management.ManagementError">
+<em class="property">exception </em><code class="descclassname">caviar.engine.management.</code><code class="descname">ManagementError</code><span class="sig-paren">(</span><em>exit_code</em>, <em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#BaseException" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">BaseException</span></code></a></p>
+<dl class="attribute">
+<dt id="caviar.engine.management.ManagementError.exit_code">
+<code class="descname">exit_code</code><a class="headerlink" href="#caviar.engine.management.ManagementError.exit_code" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="caviar.engine.management.ManagementError.message">
+<code class="descname">message</code><a class="headerlink" href="#caviar.engine.management.ManagementError.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="caviar.engine.management.Management">
+<em class="property">class </em><code class="descclassname">caviar.engine.management.</code><code class="descname">Management</code><span class="sig-paren">(</span><em>das_machine</em>, <em>port</em>, <em>http_auth</em>, <em>network_module=&lt;module 'caviar.network' from '/home/laguna/src/caviar/packages/caviar/network/__init__.py'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.Management" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Management client.</p>
+<dl class="method">
+<dt id="caviar.engine.management.Management.domain">
+<code class="descname">domain</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.Management.domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve domain root resource.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#caviar.engine.management.ManagementResource" title="caviar.engine.management.ManagementResource">ManagementResource</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The domain root resource.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="caviar.engine.management.ManagementResource">
+<em class="property">class </em><code class="descclassname">caviar.engine.management.</code><code class="descname">ManagementResource</code><span class="sig-paren">(</span><em>http_resource</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementResource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="attribute">
+<dt id="caviar.engine.management.ManagementResource.command">
+<code class="descname">command</code><a class="headerlink" href="#caviar.engine.management.ManagementResource.command" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="caviar.engine.management.ManagementResource.exit_code_success">
+<code class="descname">exit_code_success</code><a class="headerlink" href="#caviar.engine.management.ManagementResource.exit_code_success" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="caviar.engine.management.ManagementResource.exit_code_failure">
+<code class="descname">exit_code_failure</code><a class="headerlink" href="#caviar.engine.management.ManagementResource.exit_code_failure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="caviar.engine.management.ManagementResource.message">
+<code class="descname">message</code><a class="headerlink" href="#caviar.engine.management.ManagementResource.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="caviar.engine.management.ManagementResource.extra_properties">
+<code class="descname">extra_properties</code><a class="headerlink" href="#caviar.engine.management.ManagementResource.extra_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="caviar.engine.management.ManagementResource.raise_not_success">
+<code class="descname">raise_not_success</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementResource.raise_not_success" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="caviar.engine.management.ManagementExtraProperties">
+<em class="property">class </em><code class="descclassname">caviar.engine.management.</code><code class="descname">ManagementExtraProperties</code><span class="sig-paren">(</span><em>http_resource</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementExtraProperties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="attribute">
+<dt id="caviar.engine.management.ManagementExtraProperties.commands">
+<code class="descname">commands</code><a class="headerlink" href="#caviar.engine.management.ManagementExtraProperties.commands" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="caviar.engine.management.ManagementExtraProperties.methods">
+<code class="descname">methods</code><a class="headerlink" href="#caviar.engine.management.ManagementExtraProperties.methods" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="caviar.engine.management.ManagementExtraProperties.entity">
+<code class="descname">entity</code><a class="headerlink" href="#caviar.engine.management.ManagementExtraProperties.entity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="caviar.engine.management.ManagementExtraProperties.child_resources">
+<code class="descname">child_resources</code><a class="headerlink" href="#caviar.engine.management.ManagementExtraProperties.child_resources" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="caviar.engine.management.ManagementCommands">
+<em class="property">class </em><code class="descclassname">caviar.engine.management.</code><code class="descname">ManagementCommands</code><span class="sig-paren">(</span><em>http_resource</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementCommands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="caviar.engine.management.ManagementCommand">
+<em class="property">class </em><code class="descclassname">caviar.engine.management.</code><code class="descname">ManagementCommand</code><span class="sig-paren">(</span><em>http_resource</em>, <em>method_name</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementCommand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="caviar.engine.management.ManagementMethods">
+<em class="property">class </em><code class="descclassname">caviar.engine.management.</code><code class="descname">ManagementMethods</code><span class="sig-paren">(</span><em>http_resource</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementMethods" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="caviar.engine.management.ManagementEntity">
+<em class="property">class </em><code class="descclassname">caviar.engine.management.</code><code class="descname">ManagementEntity</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementEntity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="caviar.engine.management.ManagementChildResources">
+<em class="property">class </em><code class="descclassname">caviar.engine.management.</code><code class="descname">ManagementChildResources</code><span class="sig-paren">(</span><em>http_resource</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementChildResources" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="caviar.engine.management.ManagementChildResources.items">
+<code class="descname">items</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementChildResources.items" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="caviar.engine.management.ManagementChildResources.cache_evict">
+<code class="descname">cache_evict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementChildResources.cache_evict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="caviar.engine.management.ManagementChildResource">
+<em class="property">class </em><code class="descclassname">caviar.engine.management.</code><code class="descname">ManagementChildResource</code><span class="sig-paren">(</span><em>http_resource</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementChildResource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="caviar.engine.management.ManagementChildResource.get">
+<code class="descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementChildResource.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="caviar.engine.management.ManagementChildResource.cache_evict">
+<code class="descname">cache_evict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementChildResource.cache_evict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="caviar.engine.management.ManagementRequest">
+<em class="property">class </em><code class="descclassname">caviar.engine.management.</code><code class="descname">ManagementRequest</code><span class="sig-paren">(</span><em>http_resource</em>, <em>method_name</em>, <em>params=None</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="caviar.engine.management.ManagementParameters">
+<em class="property">class </em><code class="descclassname">caviar.engine.management.</code><code class="descname">ManagementParameters</code><span class="sig-paren">(</span><em>query_params</em>, <em>msg_params</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="caviar.engine.management.ManagementParameters.items">
+<code class="descname">items</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementParameters.items" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="caviar.engine.management.ManagementParameter">
+<em class="property">class </em><code class="descclassname">caviar.engine.management.</code><code class="descname">ManagementParameter</code><span class="sig-paren">(</span><em>name</em>, <em>default_value</em>, <em>acceptable_values</em>, <em>param_type</em>, <em>optional</em>, <em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementParameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="attribute">
+<dt id="caviar.engine.management.ManagementParameter.name">
+<code class="descname">name</code><a class="headerlink" href="#caviar.engine.management.ManagementParameter.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="caviar.engine.management.ManagementParameter.default_value">
+<code class="descname">default_value</code><a class="headerlink" href="#caviar.engine.management.ManagementParameter.default_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="caviar.engine.management.ManagementParameter.is_required">
+<code class="descname">is_required</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementParameter.is_required" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="caviar.engine.management.ManagementParameter.is_boolean">
+<code class="descname">is_boolean</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementParameter.is_boolean" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="caviar.engine.management.ManagementParameter.is_int">
+<code class="descname">is_int</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementParameter.is_int" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="caviar.engine.management.ManagementParameter.is_string">
+<code class="descname">is_string</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementParameter.is_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="caviar.engine.management.ManagementParameter.is_file">
+<code class="descname">is_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementParameter.is_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="caviar.engine.management.ManagementParameter.is_key">
+<code class="descname">is_key</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementParameter.is_key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="caviar.engine.management.ManagementParameter.apply">
+<code class="descname">apply</code><span class="sig-paren">(</span><em>req</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementParameter.apply" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="caviar.engine.management.ManagementQueryParameter">
+<em class="property">class </em><code class="descclassname">caviar.engine.management.</code><code class="descname">ManagementQueryParameter</code><span class="sig-paren">(</span><em>name</em>, <em>default_value</em>, <em>acceptable_values</em>, <em>param_type</em>, <em>optional</em>, <em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementQueryParameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#caviar.engine.management.ManagementParameter" title="caviar.engine.management.ManagementParameter"><code class="xref py py-class docutils literal"><span class="pre">caviar.engine.management.ManagementParameter</span></code></a></p>
+<dl class="method">
+<dt id="caviar.engine.management.ManagementQueryParameter.apply_impl">
+<code class="descname">apply_impl</code><span class="sig-paren">(</span><em>req</em>, <em>name</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementQueryParameter.apply_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="caviar.engine.management.ManagementMessageParameter">
+<em class="property">class </em><code class="descclassname">caviar.engine.management.</code><code class="descname">ManagementMessageParameter</code><span class="sig-paren">(</span><em>name</em>, <em>default_value</em>, <em>acceptable_values</em>, <em>param_type</em>, <em>optional</em>, <em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementMessageParameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#caviar.engine.management.ManagementParameter" title="caviar.engine.management.ManagementParameter"><code class="xref py py-class docutils literal"><span class="pre">caviar.engine.management.ManagementParameter</span></code></a></p>
+<dl class="method">
+<dt id="caviar.engine.management.ManagementMessageParameter.apply_impl">
+<code class="descname">apply_impl</code><span class="sig-paren">(</span><em>req</em>, <em>name</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.management.ManagementMessageParameter.apply_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="modules.engine.nodealloc.html" class="btn btn-neutral float-right" title="caviar.engine.nodealloc" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="modules.engine.lb.html" class="btn btn-neutral" title="caviar.engine.lb" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Miquel A. Ferran Gonzalez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

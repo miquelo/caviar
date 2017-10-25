@@ -1,0 +1,457 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>caviar.network.http &mdash; CAVIAR 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CAVIAR 0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Library modules" href="modules.html"/>
+        <link rel="next" title="caviar.network.ssh" href="modules.network.ssh.html"/>
+        <link rel="prev" title="caviar.network" href="modules.network.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CAVIAR
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../gstarted/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="interfaces.html">Involved interfaces</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html">Library modules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="modules.domain.html">caviar.domain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.domain.cluster.html">caviar.domain.cluster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.domain.instance.html">caviar.domain.instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.domain.node.html">caviar.domain.node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.engine.html">caviar.engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.engine.asadmin.html">caviar.engine.asadmin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.engine.lb.html">caviar.engine.lb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.engine.management.html">caviar.engine.management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.engine.nodealloc.html">caviar.engine.nodealloc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.network.html">caviar.network</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">caviar.network.http</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.network.ssh.html">caviar.network.ssh</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ssh.html">SSH providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="machinery.html">Machinery providers</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CAVIAR</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Reference documentation</a> &raquo;</li>
+        
+          <li><a href="modules.html">Library modules</a> &raquo;</li>
+        
+      <li>caviar.network.http</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/reference/modules.network.http.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-caviar.network.http">
+<span id="caviar-network-http"></span><h1>caviar.network.http<a class="headerlink" href="#module-caviar.network.http" title="Permalink to this headline">¶</a></h1>
+<p>HTTP module.</p>
+<dl class="class">
+<dt id="caviar.network.http.HTTPResource">
+<em class="property">class </em><code class="descclassname">caviar.network.http.</code><code class="descname">HTTPResource</code><span class="sig-paren">(</span><em>path</em>, <em>protocol</em>, <em>host</em>, <em>port</em>, <em>auth=None</em>, <em>headers=None</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.network.http.HTTPResource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>An HTTP resource.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – List of path components.</li>
+<li><strong>protocol</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – HTTP protocol, such as ‘http’ and ‘https’.</li>
+<li><strong>host</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Host.</li>
+<li><strong>port</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Port.</li>
+<li><strong>auth</strong> – Authentication specification.</li>
+<li><strong>headers</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – Common headers. Each entry contains a list of values.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="caviar.network.http.HTTPResource.request">
+<code class="descname">request</code><span class="sig-paren">(</span><em>method_name</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.network.http.HTTPResource.request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="caviar.network.http.HTTPResource.push">
+<code class="descname">push</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.network.http.HTTPResource.push" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="caviar.network.http.HTTPResource.ref">
+<code class="descname">ref</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.network.http.HTTPResource.ref" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="caviar.network.http.HTTPRequest">
+<em class="property">class </em><code class="descclassname">caviar.network.http.</code><code class="descname">HTTPRequest</code><span class="sig-paren">(</span><em>method</em>, <em>protocol</em>, <em>host</em>, <em>port</em>, <em>path</em>, <em>auth</em>, <em>headers</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.network.http.HTTPRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="attribute">
+<dt id="caviar.network.http.HTTPRequest.method">
+<code class="descname">method</code><a class="headerlink" href="#caviar.network.http.HTTPRequest.method" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="caviar.network.http.HTTPRequest.path">
+<code class="descname">path</code><a class="headerlink" href="#caviar.network.http.HTTPRequest.path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="caviar.network.http.HTTPRequest.query_param">
+<code class="descname">query_param</code><span class="sig-paren">(</span><em>name</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.network.http.HTTPRequest.query_param" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="caviar.network.http.HTTPRequest.data_param">
+<code class="descname">data_param</code><span class="sig-paren">(</span><em>name</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.network.http.HTTPRequest.data_param" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="caviar.network.http.HTTPRequest.file_param">
+<code class="descname">file_param</code><span class="sig-paren">(</span><em>name</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.network.http.HTTPRequest.file_param" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="caviar.network.http.HTTPRequest.perform">
+<code class="descname">perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#caviar.network.http.HTTPRequest.perform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="caviar.network.http.HTTPResponse">
+<em class="property">class </em><code class="descclassname">caviar.network.http.</code><code class="descname">HTTPResponse</code><span class="sig-paren">(</span><em>status_code</em>, <em>headers</em>, <em>content</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.network.http.HTTPResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>HTTP response attributes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>status_code</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Response status code.</li>
+<li><strong>headers</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – Dictionary with lists of strings containing response headers.</li>
+<li><strong>content</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – Dictionary that comes from decoding the JSON response body.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="caviar.network.http.HTTPResponse.status_code">
+<code class="descname">status_code</code><a class="headerlink" href="#caviar.network.http.HTTPResponse.status_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Response status code.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)">int</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Status code value.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="caviar.network.http.HTTPResponse.headers">
+<code class="descname">headers</code><a class="headerlink" href="#caviar.network.http.HTTPResponse.headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary with lists of strings containing response headers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Headers dictionary.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="caviar.network.http.HTTPResponse.content">
+<code class="descname">content</code><a class="headerlink" href="#caviar.network.http.HTTPResponse.content" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary that comes from decoding the JSON response body.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Content dictionary.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="caviar.network.http.HTTPNoneAuth">
+<em class="property">class </em><code class="descclassname">caviar.network.http.</code><code class="descname">HTTPNoneAuth</code><a class="headerlink" href="#caviar.network.http.HTTPNoneAuth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>No authentication.</p>
+<dl class="method">
+<dt id="caviar.network.http.HTTPNoneAuth.translate">
+<code class="descname">translate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#caviar.network.http.HTTPNoneAuth.translate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Translate it to the underlying implementation authentication.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Translated authentication.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="caviar.network.http.HTTPBasicAuth">
+<em class="property">class </em><code class="descclassname">caviar.network.http.</code><code class="descname">HTTPBasicAuth</code><span class="sig-paren">(</span><em>user</em>, <em>password</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.network.http.HTTPBasicAuth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Basic authentication.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>user</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – User name.</li>
+<li><strong>password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – User password.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="caviar.network.http.HTTPBasicAuth.translate">
+<code class="descname">translate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#caviar.network.http.HTTPBasicAuth.translate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Translate it to the underlying implementation authentication.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Translated authentication.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="modules.network.ssh.html" class="btn btn-neutral float-right" title="caviar.network.ssh" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="modules.network.html" class="btn btn-neutral" title="caviar.network" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Miquel A. Ferran Gonzalez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

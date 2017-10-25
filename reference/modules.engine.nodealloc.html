@@ -1,0 +1,293 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>caviar.engine.nodealloc &mdash; CAVIAR 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CAVIAR 0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Library modules" href="modules.html"/>
+        <link rel="next" title="caviar.network" href="modules.network.html"/>
+        <link rel="prev" title="caviar.engine.management" href="modules.engine.management.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CAVIAR
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../gstarted/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="interfaces.html">Involved interfaces</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html">Library modules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="modules.domain.html">caviar.domain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.domain.cluster.html">caviar.domain.cluster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.domain.instance.html">caviar.domain.instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.domain.node.html">caviar.domain.node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.engine.html">caviar.engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.engine.asadmin.html">caviar.engine.asadmin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.engine.lb.html">caviar.engine.lb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.engine.management.html">caviar.engine.management</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">caviar.engine.nodealloc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.network.html">caviar.network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.network.http.html">caviar.network.http</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.network.ssh.html">caviar.network.ssh</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ssh.html">SSH providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="machinery.html">Machinery providers</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CAVIAR</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Reference documentation</a> &raquo;</li>
+        
+          <li><a href="modules.html">Library modules</a> &raquo;</li>
+        
+      <li>caviar.engine.nodealloc</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/reference/modules.engine.nodealloc.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-caviar.engine.nodealloc">
+<span id="caviar-engine-nodealloc"></span><h1>caviar.engine.nodealloc<a class="headerlink" href="#module-caviar.engine.nodealloc" title="Permalink to this headline">¶</a></h1>
+<p>Node allocator module.</p>
+<dl class="class">
+<dt id="caviar.engine.nodealloc.NodeAllocator">
+<em class="property">class </em><code class="descclassname">caviar.engine.nodealloc.</code><code class="descname">NodeAllocator</code><span class="sig-paren">(</span><em>ssh_session_fact</em>, <em>das_machine</em>, <em>node_alloc_machine</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.nodealloc.NodeAllocator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Node allocator.</p>
+<dl class="method">
+<dt id="caviar.engine.nodealloc.NodeAllocator.prepare">
+<code class="descname">prepare</code><span class="sig-paren">(</span><em>domain_name</em>, <em>node_name</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.engine.nodealloc.NodeAllocator.prepare" title="Permalink to this definition">¶</a></dt>
+<dd><p>Install the specified domain saved master password to the specified node
+file system.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>domain_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of the domain who owns the saved master password.</li>
+<li><strong>node_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of the node where the master password must be installed on.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)">str</a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The node allocator host.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="modules.network.html" class="btn btn-neutral float-right" title="caviar.network" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="modules.engine.management.html" class="btn btn-neutral" title="caviar.engine.management" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Miquel A. Ferran Gonzalez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

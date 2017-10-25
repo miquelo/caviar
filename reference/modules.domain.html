@@ -1,0 +1,573 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>caviar.domain &mdash; CAVIAR 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="CAVIAR 0.1 documentation" href="../index.html"/>
+        <link rel="up" title="Library modules" href="modules.html"/>
+        <link rel="next" title="caviar.domain.cluster" href="modules.domain.cluster.html"/>
+        <link rel="prev" title="Library modules" href="modules.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CAVIAR
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../gstarted/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="interfaces.html">Involved interfaces</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html">Library modules</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">caviar.domain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.domain.cluster.html">caviar.domain.cluster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.domain.instance.html">caviar.domain.instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.domain.node.html">caviar.domain.node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.engine.html">caviar.engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.engine.asadmin.html">caviar.engine.asadmin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.engine.lb.html">caviar.engine.lb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.engine.management.html">caviar.engine.management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.engine.nodealloc.html">caviar.engine.nodealloc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.network.html">caviar.network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.network.http.html">caviar.network.http</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules.network.ssh.html">caviar.network.ssh</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ssh.html">SSH providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="machinery.html">Machinery providers</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CAVIAR</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Reference documentation</a> &raquo;</li>
+        
+          <li><a href="modules.html">Library modules</a> &raquo;</li>
+        
+      <li>caviar.domain</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/reference/modules.domain.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-caviar.domain">
+<span id="caviar-domain"></span><h1>caviar.domain<a class="headerlink" href="#module-caviar.domain" title="Permalink to this headline">¶</a></h1>
+<p>Domain module.</p>
+<dl class="class">
+<dt id="caviar.domain.Domain">
+<em class="property">class </em><code class="descclassname">caviar.domain.</code><code class="descname">Domain</code><span class="sig-paren">(</span><em>engine</em>, <em>name</em>, <em>admin_host</em>, <em>admin_port</em>, <em>running</em>, <em>restart_required</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.domain.Domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Domain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>engine</strong> (<a class="reference internal" href="modules.engine.html#caviar.engine.Engine" title="caviar.engine.Engine"><em>caviar.engine.Engine</em></a>) – Underlying engine.</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="caviar.domain.Domain.name">
+<code class="descname">name</code><a class="headerlink" href="#caviar.domain.Domain.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Domain name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)">str</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="caviar.domain.Domain.admin_port">
+<code class="descname">admin_port</code><a class="headerlink" href="#caviar.domain.Domain.admin_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>Administrator port.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)">str</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="caviar.domain.Domain.manage">
+<code class="descname">manage</code><span class="sig-paren">(</span><em>admin_user</em>, <em>admin_password</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.domain.Domain.manage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage this domain.</p>
+<p>Ensure it is running and without requiring to be restarted, and update
+its state.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>admin_user</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of the administrator user.</li>
+<li><strong>admin_password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Password of the administrator user.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#caviar.domain.ManagedDomain" title="caviar.domain.ManagedDomain">ManagedDomain</a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The managed domain.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="caviar.domain.ManagedDomain">
+<em class="property">class </em><code class="descclassname">caviar.domain.</code><code class="descname">ManagedDomain</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.domain.ManagedDomain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Managed domain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>context</strong> (<a class="reference internal" href="#caviar.domain.ManagedDomainContext" title="caviar.domain.ManagedDomainContext"><em>ManagedDomainContext</em></a>) – Managed domain context.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="caviar.domain.ManagedDomain.nodes">
+<code class="descname">nodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#caviar.domain.ManagedDomain.nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Available nodes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#iter" title="(in Python v3.6)">iter</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Iterator that yields available nodes.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="caviar.domain.ManagedDomain.create_node">
+<code class="descname">create_node</code><span class="sig-paren">(</span><em>name</em>, <em>allocator_name</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.domain.ManagedDomain.create_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a node on this domain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Node name.</li>
+<li><strong>allocator_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Node allocator name.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="modules.domain.node.html#caviar.domain.node.Node" title="caviar.domain.node.Node">node.Node</a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The created node.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="caviar.domain.ManagedDomain.clusters">
+<code class="descname">clusters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#caviar.domain.ManagedDomain.clusters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Available clusters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#iter" title="(in Python v3.6)">iter</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Iterator that yields available clusters.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="caviar.domain.ManagedDomain.create_cluster">
+<code class="descname">create_cluster</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.domain.ManagedDomain.create_cluster" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="caviar.domain.ManagedDomainContext">
+<em class="property">class </em><code class="descclassname">caviar.domain.</code><code class="descname">ManagedDomainContext</code><span class="sig-paren">(</span><em>engine</em>, <em>domain_name</em>, <em>admin_port</em>, <em>admin_user</em>, <em>admin_password</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.domain.ManagedDomainContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Managed domain context.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>engine</strong> (<a class="reference internal" href="modules.engine.html#caviar.engine.Engine" title="caviar.engine.Engine"><em>caviar.engine.Engine</em></a>) – Underlying engine.</li>
+<li><strong>domain_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Domain name.</li>
+<li><strong>admin_port</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Administrator port.</li>
+<li><strong>admin_user</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Administrator user name.</li>
+<li><strong>admin_password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Administrator password.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="caviar.domain.ManagedDomainContext.node_dir">
+<code class="descname">node_dir</code><a class="headerlink" href="#caviar.domain.ManagedDomainContext.node_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Node directory.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)">str</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="caviar.domain.ManagedDomainContext.management">
+<code class="descname">management</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#caviar.domain.ManagedDomainContext.management" title="Permalink to this definition">¶</a></dt>
+<dd><p>Domain management for this context.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="modules.engine.management.html#caviar.engine.management.Management" title="caviar.engine.management.Management">caviar.engine.management.Management</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Domain management.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="caviar.domain.ManagedDomainContext.prepare_node">
+<code class="descname">prepare_node</code><span class="sig-paren">(</span><em>allocator_name</em>, <em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.domain.ManagedDomainContext.prepare_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepare an allocated node.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>allocator_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Node allocator name.</li>
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Node name.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)">str</a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Node allocator host.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="caviar.domain.Environment">
+<em class="property">class </em><code class="descclassname">caviar.domain.</code><code class="descname">Environment</code><span class="sig-paren">(</span><em>engine</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.domain.Environment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>GlassFish environment.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>engine</strong> (<a class="reference internal" href="modules.engine.html#caviar.engine.Engine" title="caviar.engine.Engine"><em>caviar.engine.Engine</em></a>) – GlassFish engine.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="caviar.domain.Environment.domains">
+<code class="descname">domains</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#caviar.domain.Environment.domains" title="Permalink to this definition">¶</a></dt>
+<dd><p>Available domains.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#iter" title="(in Python v3.6)">iter</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Iterator that yields available domains.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="caviar.domain.Environment.create_domain">
+<code class="descname">create_domain</code><span class="sig-paren">(</span><em>name</em>, <em>admin_user</em>, <em>admin_password</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.domain.Environment.create_domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a domain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Domain name.</li>
+<li><strong>admin_user</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Administrator user name.</li>
+<li><strong>admin_password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Administrator user password.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#caviar.domain.Domain" title="caviar.domain.Domain">Domain</a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The created domain.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="caviar.domain.Environment.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#caviar.domain.Environment.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close this environment.</p>
+<p>Shutdown the engine.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="caviar.domain.environment">
+<code class="descclassname">caviar.domain.</code><code class="descname">environment</code><span class="sig-paren">(</span><em>machinery_module_name</em>, <em>machinery_params</em>, <em>mgmt_public_key_path</em>, <em>mgmt_private_key_path</em>, <em>master_password</em>, <em>log_out=&lt;_io.TextIOWrapper name='&lt;stdout&gt;' mode='w' encoding='UTF-8'&gt;</em>, <em>ssh_module_name='caviar.provider.ssh.paramiko'</em>, <em>das_server_name='das'</em>, <em>node_alloc_server_prefix='nodealloc'</em><span class="sig-paren">)</span><a class="headerlink" href="#caviar.domain.environment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restore the specified environment.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>machinery_module_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Machinery module name.</li>
+<li><strong>machinery_params</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – Machinery parameters.</li>
+<li><strong>mgmt_public_key_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Management public key path.</li>
+<li><strong>mgmt_private_key_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Management private key path.</li>
+<li><strong>master_password</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Used master password.</li>
+<li><strong>log_out</strong> (<em>fileobj</em>) – Logging output.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#caviar.domain.Environment" title="caviar.domain.Environment">Environment</a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The restored environment.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="modules.domain.cluster.html" class="btn btn-neutral float-right" title="caviar.domain.cluster" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="modules.html" class="btn btn-neutral" title="Library modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Miquel A. Ferran Gonzalez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
