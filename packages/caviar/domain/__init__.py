@@ -502,12 +502,13 @@ class Environment:
 			domain_data["name"]
 		)
 		
-		self.__keystore(name).setup(
-			subject_path=cert.subject_path,
-			issuer_path=cert.issuer_path,
-			private_key_path=cert.private_key_path
-		)
-		
+		if cacerts is not None:
+			self.__keystore(name).append_cacerts(cacerts)
+		if admin_certkey is not None:
+			self.__keystore(name).replace_admin_certkey(admin_certkey)
+		if inst_certkey is not None:
+			self.__keystore(name).replace_inst_certkey(inst_certkey)
+			
 		return next(
 			filter(
 				lambda domain: domain.name == name,

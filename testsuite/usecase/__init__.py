@@ -101,7 +101,10 @@ class TestCase(unittest.TestCase):
 				force=True
 			)
 			
-		self.certificates = self.restore_certificates()
+		self.domain_cacerts, \
+		self.domain_admin_certkey, \
+		self.domain_inst_certkey, \
+		self.cluster_certkey = self.restore_certificates()
 		
 	def tearDown(self):
 
@@ -120,10 +123,12 @@ class TestCase(unittest.TestCase):
 		self.assertIsNone(test_domain)
 		
 		test_domain = self.environment.create_domain(
-			DOMAIN_NAME,
-			ADMIN_USER,
-			ADMIN_PASSWORD,
-			self.certificates
+			name=DOMAIN_NAME,
+			admin_user=ADMIN_USER,
+			admin_password=ADMIN_PASSWORD,
+			cacerts=self.domain_cacerts,
+			admin_certkey=self.domain_admin_certkey,
+			inst_certkey=self.domain_inst_certkey
 		)
 		self.assertEqual(test_domain.name, DOMAIN_NAME)
 
@@ -145,7 +150,10 @@ class TestCase(unittest.TestCase):
 		node_set = set(managed_domain.nodes())
 		self.assertSetEqual(node_set, NODE_SET)
 		
-		clust = managed_domain.create_cluster(CLUSTER_NAME)
+		clust = managed_domain.create_cluster(
+			name=CLUSTER_NAME,
+			certkey=self.cluster_certkey
+		)
 		self.assertEqual(clust.name, CLUSTER_NAME)
 		
 		inst01 = node01.create_instance(INST01_NAME, clust)
@@ -188,18 +196,56 @@ class TestCase(unittest.TestCase):
 		])
 		
 		build_dir = os.path.join(cert_dir, "build")
-		return caviar.domain.Certificate(
-			subject_path=os.path.join(
-				build_dir,
-				"server/certs/caviar.test.cert.pem"
+		return (
+			[
+				caviar.certificate.path.PathCertificate(
+					path=os.path.join(
+						build_dir,
+						"ca/certs/chain.pem"
+					)
+				)
+			],
+			caviar.certificate.SimpleCertificateKey(
+				certificate=caviar.certificate.path.PathCertificate(
+					path=os.path.join(
+						build_dir,
+						"server/certs/domain-admin-cert.pem"
+					)
+				),
+				key=caviar.certificate.path.PathPrivateKey(
+					path=os.path.join(
+						build_dir,
+						"server/private/domain-admin-key.pem"
+					)
+				)
 			),
-			issuer_path=os.path.join(
-				build_dir,
-				"ca/certs/chain.pem"
+			caviar.certificate.SimpleCertificateKey(
+				certificate=caviar.certificate.path.PathCertificate(
+					path=os.path.join(
+						build_dir,
+						"server/certs/domain-inst-cert.pem"
+					)
+				),
+				key=caviar.certificate.path.PathPrivateKey(
+					path=os.path.join(
+						build_dir,
+						"server/private/domain-inst-key.pem"
+					)
+				)
 			),
-			private_key_path=os.path.join(
-				build_dir,
-				"server/private/caviar.test.key.pem"
+			caviar.certificate.SimpleCertificateKey(
+				certificate=caviar.certificate.path.PathCertificate(
+					path=os.path.join(
+						build_dir,
+						"server/certs/cluster-cert.pem"
+					)
+				),
+				key=caviar.certificate.path.PathPrivateKey(
+					path=os.path.join(
+						build_dir,
+						"server/private/cluster-key.pem"
+					)
+				)
 			)
 		)
 

@@ -18,20 +18,42 @@
 import unittest
 
 import caviar
+import caviar.certificate
+import caviar.certificate.path
 import caviar.domain
 
 from unittest.mock import ANY, patch
+
+ANY_CACERTS = [
+	caviar.certificate.path.PathCertificate(
+		path="/cacert-1"
+	),
+	caviar.certificate.path.PathCertificate(
+		path="/cacert-2"
+	)
+]
+ANY_ADMIN_CERTKEY=caviar.certificate.SimpleCertificateKey(
+	certificate=caviar.certificate.path.PathCertificate(
+		path="/admin-cert"
+	),
+	key=caviar.certificate.path.PathPrivateKey(
+		path="/admin-key"
+	)
+)
+ANY_INST_CERTKEY=caviar.certificate.SimpleCertificateKey(
+	certificate=caviar.certificate.path.PathCertificate(
+		path="/inst-cert"
+	),
+	key=caviar.certificate.path.PathPrivateKey(
+		path="/inst-key"
+	)
+)
 
 SOME_DOMAIN_NAME = "domain-01"
 SOME_ADMIN_HOST = "localhost"
 SOME_ADMIN_PORT = 4848
 SOME_ADMIN_USER = "admin"
 SOME_ADMIN_PASSWORD = "12345678"
-SOME_CERTIFICATE = caviar.domain.Certificate(
-	subject_path="/subject",
-	issuer_path="/issuer",
-	private_key_path="/private/key"
-)
 
 SOME_NODE_DIR = "/node"
 
@@ -458,10 +480,12 @@ class EnvironmentTestCase(unittest.TestCase):
 		self.asadmin.list_domains.return_value = SOME_DOMAIN_DATA_LIST
 		
 		created_domain = self.environment.create_domain(
-			SOME_DOMAIN_NAME,
-			SOME_ADMIN_USER,
-			SOME_ADMIN_PASSWORD,
-			SOME_CERTIFICATE
+			name=SOME_DOMAIN_NAME,
+			admin_user=SOME_ADMIN_USER,
+			admin_password=SOME_ADMIN_PASSWORD,
+			cacerts=ANY_CACERTS,
+			admin_certkey=ANY_ADMIN_CERTKEY,
+			inst_certkey=ANY_INST_CERTKEY
 		)
 		
 		self.assertEqual(created_domain.name, SOME_DOMAIN_NAME)

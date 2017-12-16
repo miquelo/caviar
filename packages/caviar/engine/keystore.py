@@ -37,6 +37,22 @@ class Keystore:
 		self.__das_machine = das_machine
 		self.__master_password = master_password
 		
+	def append_cacerts(self, cacerts):
+	
+		any(self.__ssh_session.execute(
+			self.__das_machine.keystore_begin_cmd(self.__domain_name)
+		))
+		
+		for index, cacert in enumerate(cacerts):
+			with cacert.open() as cacert_file:
+			self.__ssh_session.copy(
+				cacert_file,
+				self.__das_machine.keystore_cacert_path(
+					self.__domain_name,
+					index
+				)
+			)
+			
 	def setup(self, subject_path, issuer_path, private_key_path):
 	
 		any(self.__ssh_session.execute(
