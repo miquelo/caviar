@@ -188,15 +188,23 @@ Machinery interfaces.
    
       # TODO ...
       
-   .. function:: keystore_cacert_path(domain_name, index)
+   .. function:: keystore_cacert_path(domain_name)
    
       # TODO ...
       
-   .. function:: keystore_admin_certkey_path(domain_name)
+   .. function:: keystore_admin_cert_path(domain_name)
    
       # TODO ...
       
-   .. function:: keystore_inst_certkey_path(domain_name)
+   .. function:: keystore_admin_key_path(domain_name)
+   
+      # TODO ...
+      
+   .. function:: keystore_inst_cert_path(domain_name)
+   
+      # TODO ...
+      
+   .. function:: keystore_inst_key_path(domain_name)
    
       # TODO ...
       

@@ -72,15 +72,13 @@ class SSHPhysicalSession:
 			self.__close()
 			raise SSHInvalidSessionError(e)
 			
-	# TODO Test coverage...
-	def copy(self, source_path, target_path):
+	def copy(self, source_file, target_path):
 	
 		try:
 			if self.__paramiko_file_client is None:
 				self.__paramiko_file_client = self.__paramiko_client.open_sftp()
 			with self.__paramiko_file_client.open(target_path, mode="w") as tf:
-				with open(source_path, mode="r") as sf:
-					tf.write(sf.read())
+				tf.write(source_file.read())
 		except IOError as e:
 			raise e
 		except Exception as e:

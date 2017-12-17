@@ -68,20 +68,34 @@ class Keystore:
 				
 	def __replace_admin_certkey_op(self, admin_certkey):
 	
-		with admin_certkey.open() as admin_certkey_file:
+		with admin_certkey.certificate.open() as admin_cert_file:
 			self.__ssh_session.copy(
-				admin_certkey_file,
-				self.__das_machine.keystore_admin_certkey_path(
+				admin_cert_file,
+				self.__das_machine.keystore_admin_cert_path(
+					self.__domain_name
+				)
+			)
+		with admin_certkey.key.open() as admin_key_file:
+			self.__ssh_session.copy(
+				admin_key_file,
+				self.__das_machine.keystore_admin_key_path(
 					self.__domain_name
 				)
 			)
 			
 	def __replace_inst_certkey_op(self, inst_certkey):
 	
-		with inst_certkey.open() as inst_certkey_file:
+		with inst_certkey.certificate.open() as inst_cert_file:
 			self.__ssh_session.copy(
-				inst_certkey_file,
-				self.__das_machine.keystore_inst_certkey_path(
+				inst_cert_file,
+				self.__das_machine.keystore_inst_cert_path(
+					self.__domain_name
+				)
+			)
+		with inst_certkey.key.open() as inst_key_file:
+			self.__ssh_session.copy(
+				inst_key_file,
+				self.__das_machine.keystore_inst_key_path(
 					self.__domain_name
 				)
 			)

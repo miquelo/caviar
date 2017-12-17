@@ -17,6 +17,9 @@
 
 from caviar.provider.machinery.docker import machine
 
+import random
+import string
+
 DOMAIN_DIR = "/var/glassfish/domains"
 NODE_DIR = "/var/glassfish/nodes"
 
@@ -99,7 +102,7 @@ class ServerMachine(machine.Machine):
 			master_password
 		])
 		
-	def keystore_cacert_path(self, domain_name, index):
+	def keystore_cacert_path(self, domain_name):
 	
 		return self.__keystore_file_path(
 			domain_name,
@@ -110,19 +113,35 @@ class ServerMachine(machine.Machine):
 			))
 		)
 		
-	def keystore_admin_certkey_path(self, domain_name):
+	def keystore_admin_cert_path(self, domain_name):
 	
 		return self.__keystore_file_path(
 			domain_name,
-			"certkeys",
+			"certs",
 			self.__keystore_admin_alias
 		)
 		
-	def keystore_inst_certkey_path(self, domain_name):
+	def keystore_admin_key_path(self, domain_name):
 	
 		return self.__keystore_file_path(
 			domain_name,
-			"certkeys",
+			"keys",
+			self.__keystore_admin_alias
+		)
+		
+	def keystore_inst_cert_path(self, domain_name):
+	
+		return self.__keystore_file_path(
+			domain_name,
+			"certs",
+			self.__keystore_inst_alias
+		)
+		
+	def keystore_inst_key_path(self, domain_name):
+	
+		return self.__keystore_file_path(
+			domain_name,
+			"keys",
 			self.__keystore_inst_alias
 		)
 
