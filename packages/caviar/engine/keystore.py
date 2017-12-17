@@ -56,13 +56,12 @@ class Keystore:
 			
 	def __append_cacerts_op(self, cacerts):
 	
-		for index, cacert in enumerate(cacerts):
+		for cacert in cacerts:
 			with cacert.open() as cacert_file:
 				self.__ssh_session.copy(
 					cacert_file,
 					self.__das_machine.keystore_cacert_path(
-						self.__domain_name,
-						index
+						self.__domain_name
 					)
 				)
 				
