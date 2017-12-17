@@ -21,9 +21,16 @@ Machinery interfaces.
       :rtype:
          str
          
-   .. py:attribute:: http_protocol_keystore_alias()
+   .. py:attribute:: keystore_admin_alias()
    
-      Keystore alias of certificate used by HTTP protocol.
+      Keystore alias of certificate used by administrator.
+      
+      :rtype:
+         str
+         
+   .. py:attribute:: keystore_inst_alias()
+   
+      Keystore alias of certificate used by instance.
       
       :rtype:
          str

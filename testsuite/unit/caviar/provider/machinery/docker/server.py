@@ -40,6 +40,8 @@ ANY_NODE_NAME = "node"
 ANY_NODE_HOST = "host"
 
 ANY_WEB_USER = "web"
+ANY_KEYSTORE_ADMIN_ALIAS="alias-admin"
+ANY_KEYSTORE_INST_ALIAS="alias-inst"
 
 class ServerMachineTestCase(unittest.TestCase):
 
@@ -58,6 +60,8 @@ class ServerMachineTestCase(unittest.TestCase):
 			container_id=SOME_CONTAINER_ID,
 			appserver_user=SOME_APPSERVER_USER,
 			web_user=ANY_WEB_USER,
+			keystore_admin_alias=ANY_KEYSTORE_ADMIN_ALIAS,
+			keystore_inst_alias=ANY_KEYSTORE_INST_ALIAS,
 			appserver_public_key_path=SOME_APPSERVER_PUBLIC_KEY_PATH
 		)
 		

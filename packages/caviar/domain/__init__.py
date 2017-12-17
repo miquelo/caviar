@@ -206,15 +206,17 @@ class ManagedDomain:
 				name
 			)
 			
-	def create_cluster(self, name, certkey=None):
+	def create_cluster(self, name, cacerts=None, certkey=None):
 		
 		"""
 		Create a cluster.
 		
 		:param str name:
 		   Cluster name.
+		:param iter cacerts:
+		   Iterator of CA :class:`Certificate` entries.
 		:param CertificateKey certkey:
-		   Certificate and private key used for SSL if any.
+		   Certificate and private key used for SSL, if any.
 		"""
 		
 		self.__prepare_cluster(name)

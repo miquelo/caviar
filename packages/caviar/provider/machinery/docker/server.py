@@ -23,17 +23,20 @@ NODE_DIR = "/var/glassfish/nodes"
 class ServerMachine(machine.Machine):
 
 	def __init__(self, client, container_id, appserver_user, web_user,
+			keystore_admin_alias, keystore_inst_alias,
 			appserver_public_key_path):
 	
 		super().__init__(client, container_id)
 		
 		self.__appserver_user = appserver_user
 		self.__web_user = web_user
+		self.__keystore_admin_alias = keystore_admin_alias
+		self.__keystore_inst_alias = keystore_inst_alias
 		self.__appserver_public_key_path = appserver_public_key_path
 		
-	def __keystore_setup_file_path(self, domain_name, file_name):
+	def __keystore_file_path(self, domain_name, section, alias):
 	
-		return "/tmp/keystore-{}/{}".format(domain_name, file_name)
+		return "/tmp/keystore-{}/{}/{}".format(domain_name, section, alias)
 		
 	@property
 	def appserver_user(self):
@@ -81,41 +84,45 @@ class ServerMachine(machine.Machine):
 			domain_name
 		])
 		
-	def install_certificates_cmd(self, domain_name, master_password, lb_host):
+	def keystore_update_begin_cmd(self, domain_name):
 	
 		return " ".join([
-			"$HOME/bin/install-certificates.sh",
-			DOMAIN_DIR,
-			domain_name,
-			master_password,
-			self.__web_user,
-			lb_host
-		])
-		
-	def keystore_setup_begin_cmd(self, domain_name):
-	
-		return " ".join([
-			"$HOME/bin/keystore-setup-begin.sh",
+			"$HOME/bin/keystore-update-begin.sh",
 			domain_name
 		])
 		
-	def keystore_setup_end_cmd(self, domain_name, master_password):
+	def keystore_update_end_cmd(self, domain_name, master_password):
 	
 		return " ".join([
-			"$HOME/bin/keystore-setup-end.sh",
+			"$HOME/bin/keystore-update-end.sh",
 			domain_name,
 			master_password
 		])
 		
-	def keystore_setup_subject_path(self, domain_name):
+	def keystore_cacert_path(self, domain_name, index):
 	
-		return self.__keystore_setup_file_path(domain_name, "subject")
+		return self.__keystore_file_path(
+			domain_name,
+			"cacerts",
+			"cacert-{}".format("".join(
+				random.choice(string.ascii_lowercase + string.digits)
+				for _ in range(8)
+			))
+		)
 		
-	def keystore_setup_issuer_path(self, domain_name):
+	def keystore_admin_certkey_path(self, domain_name):
 	
-		return self.__keystore_setup_file_path(domain_name, "issuer")
+		return self.__keystore_file_path(
+			domain_name,
+			"certkeys",
+			self.__keystore_admin_alias
+		)
 		
-	def keystore_setup_private_key_path(self, domain_name):
+	def keystore_inst_certkey_path(self, domain_name):
 	
-		return self.__keystore_setup_file_path(domain_name, "private-key")
+		return self.__keystore_file_path(
+			domain_name,
+			"certkeys",
+			self.__keystore_inst_alias
+		)
 

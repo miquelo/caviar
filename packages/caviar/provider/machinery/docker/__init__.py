@@ -30,7 +30,8 @@ class Machinery:
 		self.__IMAGE_TAG = "latest"
 		self.__BRANCH_NAME = "master"
 		
-		self.__HTTP_PROTOCOL_KEYSTORE_ALIAS = "s2as"
+		self.__KEYSTORE_ADMIN_ALIAS = "s1as"
+		self.__KEYSTORE_INST_ALIAS = "s2as"
 		
 		self.__client = params["client"]
 		self.__base_name_str = "{}-".format(params["base-name"]) \
@@ -114,9 +115,14 @@ class Machinery:
 		return caviar.provider.machinery.docker.server.NODE_DIR
 		
 	@property
-	def http_protocol_keystore_alias(self):
+	def keystore_admin_alias(self):
 	
-		return self.__HTTP_PROTOCOL_KEYSTORE_ALIAS
+		return self.__KEYSTORE_ADMIN_ALIAS
+		
+	@property
+	def keystore_inst_alias(self):
+	
+		return self.__KEYSTORE_INST_ALIAS
 		
 	def server(self, name, das_public_key_path=None):
 	
@@ -151,6 +157,8 @@ class Machinery:
 			self.__container_id("server", container_name, binds),
 			self.__APPSERVER_USER,
 			self.__WEB_USER,
+			self.__KEYSTORE_ADMIN_ALIAS,
+			self.__KEYSTORE_INST_ALIAS,
 			appserver_public_key_path
 		)
 		
