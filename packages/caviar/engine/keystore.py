@@ -37,47 +37,64 @@ class Keystore:
 		self.__das_machine = das_machine
 		self.__master_password = master_password
 		
-	def append_cacerts(self, cacerts):
+	def __update(self, op, arg):
 	
-		any(self.__ssh_session.execute(
-			self.__das_machine.keystore_begin_cmd(self.__domain_name)
-		))
-		
+		try:
+			any(self.__ssh_session.execute(
+				self.__das_machine.keystore_update_begin_cmd(
+					self.__domain_name
+				)
+			))
+			op(arg)
+		finally:
+			any(self.__ssh_session.execute(
+				self.__das_machine.keystore_update_end_cmd(
+					self.__domain_name,
+					self.__master_password
+				)
+			))
+			
+	def __append_cacerts_op(self, cacerts):
+	
 		for index, cacert in enumerate(cacerts):
 			with cacert.open() as cacert_file:
+				self.__ssh_session.copy(
+					cacert_file,
+					self.__das_machine.keystore_cacert_path(
+						self.__domain_name,
+						index
+					)
+				)
+				
+	def __replace_admin_certkey_op(self, admin_certkey):
+	
+		with admin_certkey.open() as admin_certkey_file:
 			self.__ssh_session.copy(
-				cacert_file,
-				self.__das_machine.keystore_cacert_path(
-					self.__domain_name,
-					index
+				admin_certkey_file,
+				self.__das_machine.keystore_admin_certkey_path(
+					self.__domain_name
 				)
 			)
 			
-	def setup(self, subject_path, issuer_path, private_key_path):
+	def __replace_inst_certkey_op(self, inst_certkey):
 	
-		any(self.__ssh_session.execute(
-			self.__das_machine.keystore_setup_begin_cmd(self.__domain_name)
-		))
-		
-		self.__ssh_session.copy(
-			subject_path,
-			self.__das_machine.keystore_setup_subject_path(self.__domain_name)
-		)
-		self.__ssh_session.copy(
-			issuer_path,
-			self.__das_machine.keystore_setup_issuer_path(self.__domain_name)
-		)
-		self.__ssh_session.copy(
-			private_key_path,
-			self.__das_machine.keystore_setup_private_key_path(
-				self.__domain_name
+		with inst_certkey.open() as inst_certkey_file:
+			self.__ssh_session.copy(
+				inst_certkey_file,
+				self.__das_machine.keystore_inst_certkey_path(
+					self.__domain_name
+				)
 			)
-		)
+			
+	def append_cacerts(self, cacerts):
+	
+		self.__update(self.__append_cacerts_op, cacerts)
 		
-		any(self.__ssh_session.execute(
-			self.__das_machine.keystore_setup_end_cmd(
-				self.__domain_name,
-				self.__master_password
-			)
-		))
+	def replace_admin_certkey(self, admin_certkey):
+	
+		self.__update(self.__replace_admin_certkey_op, admin_certkey)
+		
+	def replace_inst_certkey(self, inst_certkey):
+	
+		self.__update(self.__replace_inst_certkey_op, inst_certkey)
 

@@ -172,41 +172,24 @@ Machinery interfaces.
          str
       :return:
          The suitable command.
-         
-   .. function:: install_certificates_cmd(domain_name, master_password, lb_host)
-   
-      Create a suitable command for copying certificates and keys of the domain
-      with the given name to the specified load balancer with the given host.
-      
-      :param str domain_name:
-         Name of the source domain.
-      :param str master_password:
-         Master password used to access the domain keystore.
-      :param str lb_host:
-         Host of the target load balancer.
-         
-      :rtype:
-         str
-      :return:
-         The suitable command.
-         
-   .. function:: keystore_setup_begin_cmd(domain_name)
+            
+   .. function:: keystore_update_begin_cmd(domain_name)
    
       # TODO ...
       
-   .. function:: keystore_setup_end_cmd(domain_name, master_password)
+   .. function:: keystore_update_end_cmd(domain_name, master_password)
    
       # TODO ...
       
-   .. function:: keystore_setup_subject_path(domain_name)
+   .. function:: keystore_cacert_path(domain_name, index)
    
       # TODO ...
       
-   .. function:: keystore_setup_issuer_path(domain_name)
+   .. function:: keystore_admin_certkey_path(domain_name)
    
       # TODO ...
       
-   .. function:: keystore_setup_private_key_path(domain_name)
+   .. function:: keystore_inst_certkey_path(domain_name)
    
       # TODO ...
       
