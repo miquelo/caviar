@@ -14,27 +14,6 @@ Machinery interfaces.
    :param fileobj log_out:
       Logging output.
       
-   .. py:attribute:: server_node_dir()
-   
-      System directory of nodes on server machines.
-      
-      :rtype:
-         str
-         
-   .. py:attribute:: keystore_admin_alias()
-   
-      Keystore alias of certificate used by administrator.
-      
-      :rtype:
-         str
-         
-   .. py:attribute:: keystore_inst_alias()
-   
-      Keystore alias of certificate used by instance.
-      
-      :rtype:
-         str
-         
    .. function:: server(name, das_public_key_path=None)
 
       Restore a GlassFish server machine.
@@ -89,7 +68,14 @@ Machinery interfaces.
    Bases: :class:`Machine`
 
    GlassFish server machine.
-
+   
+   .. py:attribute:: node_dir()
+   
+      System directory of nodes on server machines.
+      
+      :rtype:
+         str
+         
    .. py:attribute:: appserver_user()
    
       Application server user name.

@@ -20,26 +20,27 @@ from caviar.provider.machinery.docker import machine
 import random
 import string
 
-DOMAIN_DIR = "/var/glassfish/domains"
-NODE_DIR = "/var/glassfish/nodes"
-
 class ServerMachine(machine.Machine):
 
-	def __init__(self, client, container_id, appserver_user, web_user,
-			keystore_admin_alias, keystore_inst_alias,
+	def __init__(self, client, container_id, appserver_user,
 			appserver_public_key_path):
 	
 		super().__init__(client, container_id)
 		
+		self.__DOMAIN_DIR = "/var/glassfish/domains"
+		self.__NODE_DIR = "/var/glassfish/nodes"
+		
 		self.__appserver_user = appserver_user
-		self.__web_user = web_user
-		self.__keystore_admin_alias = keystore_admin_alias
-		self.__keystore_inst_alias = keystore_inst_alias
 		self.__appserver_public_key_path = appserver_public_key_path
 		
 	def __keystore_file_path(self, domain_name, section, alias):
 	
 		return "/tmp/keystore-{}/{}/{}".format(domain_name, section, alias)
+		
+	@property
+	def node_dir(self):
+	
+		return self.__NODE_DIR
 		
 	@property
 	def appserver_user(self):
@@ -81,9 +82,9 @@ class ServerMachine(machine.Machine):
 			"$HOME/bin/install-master-password.sh",
 			self.appserver_user,
 			node_host,
-			NODE_DIR,
+			self.__NODE_DIR,
 			node_name,
-			DOMAIN_DIR,
+			self.__DOMAIN_DIR,
 			domain_name
 		])
 		
