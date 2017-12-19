@@ -123,10 +123,9 @@ class Engine:
 			self.__master_password
 		)
 		
-	# TODO Test coverage...
 	def keystore(self, domain_name):
 	
-		return caviar.engine.keystore.Keystore(
+		return caviar.engine.keytool.Keytool(
 			domain_name,
 			self.__ssh_session_fact,
 			self.__das_machine(),

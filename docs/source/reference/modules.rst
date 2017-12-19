@@ -14,6 +14,7 @@ All modules are under *caviar* namespace.
    modules.domain.node
    modules.engine
    modules.engine.asadmin
+   modules.engine.keytool
    modules.engine.lb
    modules.engine.management
    modules.engine.nodealloc
