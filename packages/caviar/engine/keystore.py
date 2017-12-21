@@ -19,7 +19,6 @@
 Keystore module.
 """
 
-# TODO Test coverage...
 class Keystore:
 
 	"""
