@@ -14,57 +14,6 @@
 # You should have received a copy of the GNU General Public License
 # along with CAVIAR.  If not, see <http://www.gnu.org/licenses/>.
 #
-
-class Entry:
-
-	"""
-	Keystore entry.
-	
-	:param str alias:
-	   Entry alias.
-	"""
-	
-	def __init__(self, alias):
-	
-		self.__alias = alias
-		
-	@property
-	def alias(self):
-	
-		"""
-		Entry alias.
-		
-		:rtype:
-		   str
-		"""
-		
-		return self.__alias
-		
-class CertificateEntry(Entry):
-
-	"""
-	Keystore certificate entry.
-	
-	:param str alias:
-	   Entry alias.
-	"""
-	
-	def __init__(self, alias):
-		
-		super().__init__(alias)
-		
-class KeyEntry(Entry):
-
-	"""
-	Ketstore private key entry.
-	
-	:param str alias:
-	   Entry alias.
-	"""
-	
-	def __init__(self, alias):
-	
-		super().__init__(alias)
 		
 class Keytool:
 
@@ -72,38 +21,29 @@ class Keytool:
 	Keytool.
 	"""
 	
-	def __init__(self):
-	
-		pass
+	def __init__(self, domain_name, ssh_session_fact, das_machine,
+			master_password):
+
+		self.__domain_name = domain_name
+		self.__ssh_session = ssh_session_fact.session(
+			das_machine.appserver_user,
+			das_machine.host
+		)
+		self.__das_machine = das_machine
+		self.__master_password = master_password
 		
 	def entries(self):
 	
 		"""
-		List keystore entries.
+		List keystore entries alias.
 		
 		:rtype:
 		   iter
 		:return:
-		   Iterator of :class:`Entry` items.
+		   Iterator of entries alias.
 		"""
 		
-		pass
-		
-	def put(self, alias, certificate, key=None):
-	
-		"""
-		Put a certificate or a private key entry.
-		
-		:param str alias:
-		   Entry alias.
-		:param Certificate certificate:
-		   Entry certificate.
-		:param PrivateKey key:
-		   Entry private key. It becomes a :class:`CertificateEntry` when
-		   this parameter is `None`, or a :class:`KeyEntry` otherwhise.
-		"""
-		
-		pass
+		raise Exception("Unimplemented")
 		
 	def remove(self, alias):
 	
@@ -114,5 +54,63 @@ class Keytool:
 		   Entry alias.
 		"""
 		
-		pass
+		raise Exception("Unimplemented")
+		
+class CACertificatesKeytool(Keytool):
+
+	"""
+	CA certificates keytool.
+	"""
+	
+	def __init__(self, domain_name, ssh_session_fact, das_machine,
+			master_password):
+			
+		super().__init__(
+			domain_name,
+			ssh_session_fact,
+			das_machine,
+			master_password
+		)
+		
+	def put(self, alias, cacert):
+	
+		"""
+		Put a CA certificate entry.
+		
+		:param str alias:
+		   Entry alias.
+		:param Certificate cacert:
+		   CA certificate entry.
+		"""
+		
+		raise Exception("Unimplemented")
+		
+class KeystoreKeytool(Keytool):
+
+	"""
+	Keystore keytool.
+	"""
+	
+	def __init__(self, domain_name, ssh_session_fact, das_machine,
+			master_password):
+			
+		super().__init__(
+			domain_name,
+			ssh_session_fact,
+			das_machine,
+			master_password
+		)
+		
+	def put(self, alias, certkey):
+	
+		"""
+		Put a certificate and key entry.
+		
+		:param str alias:
+		   Entry alias.
+		:param CertificateKey certkey:
+		   Certificate and key entry.
+		"""
+		
+		raise Exception("Unimplemented")
 

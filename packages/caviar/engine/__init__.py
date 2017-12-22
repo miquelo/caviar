@@ -20,7 +20,7 @@ Engine module.
 """
 
 import caviar.engine.asadmin
-import caviar.engine.keystore
+import caviar.engine.keytool
 import caviar.engine.lb
 import caviar.engine.management
 import caviar.engine.nodealloc
@@ -79,12 +79,17 @@ class Engine:
 		   str
 		"""
 		
-		return self.__machinery.server_node_dir
+		return self.__das_machine().server_node_dir
 		
 	@property
-	def http_protocol_keystore_alias(self):
+	def keystore_admin_alias(self):
 	
-		return self.__machinery.http_protocol_keystore_alias
+		return self.__das_machine().keystore_admin_alias
+		
+	@property
+	def keystore_inst_alias(self):
+	
+		return self.__das_machine().keystore_inst_alias
 		
 	def management(self, domain_name, admin_port, admin_user, admin_password):
 
@@ -123,9 +128,18 @@ class Engine:
 			self.__master_password
 		)
 		
+	def cacerts(self, domain_name):
+	
+		return caviar.engine.keytool.CACertificatesKeytool(
+			domain_name,
+			self.__ssh_session_fact,
+			self.__das_machine(),
+			self.__master_password
+		)
+		
 	def keystore(self, domain_name):
 	
-		return caviar.engine.keytool.Keytool(
+		return caviar.engine.keytool.KeystoreKeytool(
 			domain_name,
 			self.__ssh_session_fact,
 			self.__das_machine(),

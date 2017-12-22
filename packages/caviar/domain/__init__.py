@@ -25,6 +25,8 @@ import caviar.engine
 import caviar.network
 
 import importlib
+import random
+import string
 import sys
 
 class Domain:
@@ -369,7 +371,6 @@ class ManagedDomainContext:
 			name
 		)
 		
-	# TODO Test coverage...
 	def prepare_cluster(self, name):
 		
 		"""
@@ -383,7 +384,6 @@ class ManagedDomainContext:
 			self.__domain_name
 		)
 		
-	# TODO Test coverage...
 	def add_instance(self, cluster_name, name, host, port):
 	
 		self.__engine.load_balancer(cluster_name).add_instance(
@@ -392,7 +392,6 @@ class ManagedDomainContext:
 			port
 		)
 		
-	# TODO Test coverage...
 	def remove_instance(self, cluster_name, name):
 	
 		self.__engine.load_balancer(cluster_name).remove_instance(name)
@@ -410,6 +409,16 @@ class Environment:
 
 		self.__engine = engine
 		
+	@property
+	def __keystore_admin_alias(self):
+	
+		return self.__engine.__keystore_admin_alias
+		
+	@property
+	def __keystore_inst_alias(self):
+	
+		return self.__engine.__keystore_inst_alias
+		
 	def __asadmin(self):
 
 		return self.__engine.asadmin()
@@ -417,6 +426,10 @@ class Environment:
 	def __keystore(self, domain_name):
 	
 		return self.__engine.keystore(domain_name)
+		
+	def __cacerts(self, domain_name):
+	
+		return self.__engine.cacerts(domain_name)
 		
 	def domains(self):
 
@@ -505,11 +518,24 @@ class Environment:
 		)
 		
 		if cacerts is not None:
-			self.__keystore(name).append_cacerts(cacerts)
+			for cacert in cacerts:
+				self.__cacerts(name).put(
+					"".join(
+						random.choice(string.ascii_lowercase + string.digits)
+						for _ in range(8)
+					),
+					cacert
+				)
 		if admin_certkey is not None:
-			self.__keystore(name).replace_admin_certkey(admin_certkey)
+			self.__keystore(name).put(
+				self.__keystore_admin_alias,
+				admin_certkey
+			)
 		if inst_certkey is not None:
-			self.__keystore(name).replace_inst_certkey(inst_certkey)
+			self.__keystore(name).put(
+				self.__keystore_inst_alias,
+				inst_certkey
+			)
 			
 		return next(
 			filter(

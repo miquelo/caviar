@@ -166,11 +166,11 @@ Machinery interfaces.
       :return:
          The suitable command.
             
-   .. function:: keystore_update_begin_cmd(domain_name)
+   .. function:: keytool_update_begin_cmd(domain_name, upd_id)
    
       # TODO ...
       
-   .. function:: keystore_update_end_cmd(domain_name, master_password)
+   .. function:: keytool_update_end_cmd(domain_name, upd_id, master_password)
    
       # TODO ...
       

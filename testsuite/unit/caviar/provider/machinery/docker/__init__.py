@@ -60,12 +60,6 @@ class MachineryTestCase(unittest.TestCase):
 		
 		pass
 		
-	def test_server_node_dir(self):
-	
-		server_node_dir = self.machinery.server_node_dir
-		
-		self.assertIsInstance(server_node_dir, str)
-		
 	def test_server(self):
 	
 		machine = self.machinery.server(SOME_SERVER_NAME)
