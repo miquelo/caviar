@@ -14,11 +14,11 @@
 # You should have received a copy of the GNU General Public License
 # along with CAVIAR.  If not, see <http://www.gnu.org/licenses/>.
 #
-		
-class Keytool:
+
+class CACertificatesKeytool:
 
 	"""
-	Keytool.
+	CA certificates keytool.
 	"""
 	
 	def __init__(self, domain_name, ssh_session_fact, das_machine,
@@ -32,46 +32,6 @@ class Keytool:
 		self.__das_machine = das_machine
 		self.__master_password = master_password
 		
-	def entries(self):
-	
-		"""
-		List keystore entries alias.
-		
-		:rtype:
-		   iter
-		:return:
-		   Iterator of entries alias.
-		"""
-		
-		raise Exception("Unimplemented")
-		
-	def remove(self, alias):
-	
-		"""
-		Remove a keystore entry.
-		
-		:param str alias:
-		   Entry alias.
-		"""
-		
-		raise Exception("Unimplemented")
-		
-class CACertificatesKeytool(Keytool):
-
-	"""
-	CA certificates keytool.
-	"""
-	
-	def __init__(self, domain_name, ssh_session_fact, das_machine,
-			master_password):
-			
-		super().__init__(
-			domain_name,
-			ssh_session_fact,
-			das_machine,
-			master_password
-		)
-		
 	def put(self, alias, cacert):
 	
 		"""
@@ -83,9 +43,25 @@ class CACertificatesKeytool(Keytool):
 		   CA certificate entry.
 		"""
 		
-		raise Exception("Unimplemented")
+		try:
+			any(self.__ssh_session.execute(
+				self.__das_machine.keytool_update_begin_cmd(
+					self.__domain_name
+				)
+			))
+			
+			raise Exception("Unimplemented")
+			
+		finally:
+			any(self.__ssh_session.execute(
+				self.__das_machine.keytool_update_cacerts_cmd(
+					self.__domain_name,
+					alias,
+					self.__master_password
+				)
+			))
 		
-class KeystoreKeytool(Keytool):
+class KeystoreKeytool:
 
 	"""
 	Keystore keytool.
@@ -93,13 +69,14 @@ class KeystoreKeytool(Keytool):
 	
 	def __init__(self, domain_name, ssh_session_fact, das_machine,
 			master_password):
-			
-		super().__init__(
-			domain_name,
-			ssh_session_fact,
-			das_machine,
-			master_password
+
+		self.__domain_name = domain_name
+		self.__ssh_session = ssh_session_fact.session(
+			das_machine.appserver_user,
+			das_machine.host
 		)
+		self.__das_machine = das_machine
+		self.__master_password = master_password
 		
 	def put(self, alias, certkey):
 	
@@ -112,5 +89,21 @@ class KeystoreKeytool(Keytool):
 		   Certificate and key entry.
 		"""
 		
-		raise Exception("Unimplemented")
+		try:
+			any(self.__ssh_session.execute(
+				self.__das_machine.keytool_update_begin_cmd(
+					self.__domain_name
+				)
+			))
+			
+			raise Exception("Unimplemented")
+			
+		finally:
+			any(self.__ssh_session.execute(
+				self.__das_machine.keytool_update_keystore_cmd(
+					self.__domain_name,
+					alias,
+					self.__master_password
+				)
+			))
 
