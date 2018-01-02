@@ -81,16 +81,6 @@ class Engine:
 		
 		return self.__das_machine().server_node_dir
 		
-	@property
-	def keystore_admin_alias(self):
-	
-		return self.__das_machine().keystore_admin_alias
-		
-	@property
-	def keystore_inst_alias(self):
-	
-		return self.__das_machine().keystore_inst_alias
-		
 	def management(self, domain_name, admin_port, admin_user, admin_password):
 
 		"""

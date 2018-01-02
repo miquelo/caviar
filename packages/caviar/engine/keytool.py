@@ -15,7 +15,24 @@
 # along with CAVIAR.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-class CACertificatesKeytool:
+class Keytool:
+
+	def __init__(self, domain_name, ssh_session_fact, das_machine,
+			master_password):
+			
+		self.__domain_name = domain_name
+		self.__ssh_session = ssh_session_fact.session(
+			das_machine.appserver_user,
+			das_machine.host
+		)
+		self.__das_machine = das_machine
+		self.__master_password = master_password
+		
+	def aliases(self):
+	
+		pass
+		
+class CACertificatesKeytool(Keytool):
 
 	"""
 	CA certificates keytool.
@@ -24,13 +41,13 @@ class CACertificatesKeytool:
 	def __init__(self, domain_name, ssh_session_fact, das_machine,
 			master_password):
 
-		self.__domain_name = domain_name
-		self.__ssh_session = ssh_session_fact.session(
-			das_machine.appserver_user,
-			das_machine.host
+		super().__init__(
+			domain_name,
+			ssh_session_fact,
+			das_machine,
+			master_password
 		)
-		self.__das_machine = das_machine
-		self.__master_password = master_password
+		self.__file_path = das_machine.keystore_file_path
 		
 	def put(self, alias, cacert):
 	
@@ -61,49 +78,9 @@ class CACertificatesKeytool:
 				)
 			))
 		
-class KeystoreKeytool:
+class KeystoreKeytool(Keytool):
 
 	"""
 	Keystore keytool.
 	"""
-	
-	def __init__(self, domain_name, ssh_session_fact, das_machine,
-			master_password):
-
-		self.__domain_name = domain_name
-		self.__ssh_session = ssh_session_fact.session(
-			das_machine.appserver_user,
-			das_machine.host
-		)
-		self.__das_machine = das_machine
-		self.__master_password = master_password
-		
-	def put(self, alias, certkey):
-	
-		"""
-		Put a certificate and key entry.
-		
-		:param str alias:
-		   Entry alias.
-		:param CertificateKey certkey:
-		   Certificate and key entry.
-		"""
-		
-		try:
-			any(self.__ssh_session.execute(
-				self.__das_machine.keytool_update_begin_cmd(
-					self.__domain_name
-				)
-			))
-			
-			raise Exception("Unimplemented")
-			
-		finally:
-			any(self.__ssh_session.execute(
-				self.__das_machine.keytool_update_keystore_cmd(
-					self.__domain_name,
-					alias,
-					self.__master_password
-				)
-			))
 

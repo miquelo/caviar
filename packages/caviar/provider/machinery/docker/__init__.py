@@ -106,16 +106,6 @@ class Machinery:
 			)
 		return cont["Id"]
 		
-	@property
-	def keystore_admin_alias(self):
-	
-		return self.__KEYSTORE_ADMIN_ALIAS
-		
-	@property
-	def keystore_inst_alias(self):
-	
-		return self.__KEYSTORE_INST_ALIAS
-		
 	def server(self, name, das_public_key_path=None):
 	
 		container_name = self.__container_name("server", name)

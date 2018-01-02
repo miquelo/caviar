@@ -513,10 +513,6 @@ class Environment:
 		# - Remove http-listener-1 on server-config
 		# - Remove http-listener-2 on server-config
 		
-		self.__asadmin().stop_domain(
-			domain_data["name"]
-		)
-		
 		if cacerts is not None:
 			for cacert in cacerts:
 				self.__cacerts(name).put(
@@ -537,6 +533,10 @@ class Environment:
 				inst_certkey
 			)
 			
+		self.__asadmin().stop_domain(
+			domain_data["name"]
+		)
+		
 		return next(
 			filter(
 				lambda domain: domain.name == name,
