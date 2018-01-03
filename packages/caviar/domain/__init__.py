@@ -307,7 +307,6 @@ class ManagedDomainContext:
 	
 		return self.__engine.load_balancer(cluster_name)
 		
-	# TODO Test coverage
 	@property
 	def node_dir(self):
 	
@@ -423,13 +422,13 @@ class Environment:
 
 		return self.__engine.asadmin()
 		
-	def __keystore(self, domain_name):
-	
-		return self.__engine.keystore(domain_name)
-		
 	def __cacerts(self, domain_name):
 	
 		return self.__engine.cacerts(domain_name)
+		
+	def __keystore(self, domain_name):
+	
+		return self.__engine.keystore(domain_name)
 		
 	def domains(self):
 
@@ -520,7 +519,7 @@ class Environment:
 						random.choice(string.ascii_lowercase + string.digits)
 						for _ in range(8)
 					),
-					cacert
+					cacert.certificate
 				)
 		if admin_certkey is not None:
 			self.__keystore(name).put(

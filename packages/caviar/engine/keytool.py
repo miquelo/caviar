@@ -30,7 +30,43 @@ class Keytool:
 		
 	def aliases(self):
 	
-		pass
+		raise Exception("Unimplemented")
+		
+	def put(self, alias, certificate, key=None):
+	
+		"""
+		Put an entry.
+		
+		:param str alias:
+		   Entry alias.
+		:param Certificate certificate:
+		   Certificate entry.
+		:param PrivateKey key:
+		   Private key. If it is `None`, this entry is a CA certificate.
+		   Otherwise, this entry is a certificate and private key pair.
+		"""
+		
+		try:
+			any(self.__ssh_session.execute(
+				self.__das_machine.keytool_update_begin_cmd(
+					self.__domain_name
+				)
+			))
+			
+			raise Exception("Unimplemented")
+			
+		finally:
+			any(self.__ssh_session.execute(
+				self.__das_machine.keytool_update_end_cmd(
+					self.__domain_name,
+					alias,
+					self.__master_password
+				)
+			))
+			
+	def remove(self, alias):
+	
+		raise Exception("Unimplemented")
 		
 class CACertificatesKeytool(Keytool):
 
@@ -47,40 +83,32 @@ class CACertificatesKeytool(Keytool):
 			das_machine,
 			master_password
 		)
-		self.__file_path = das_machine.keystore_file_path
+		self.__das_machine = das_machine
 		
-	def put(self, alias, cacert):
+	@property
+	def file_path(self):
 	
-		"""
-		Put a CA certificate entry.
-		
-		:param str alias:
-		   Entry alias.
-		:param Certificate cacert:
-		   CA certificate entry.
-		"""
-		
-		try:
-			any(self.__ssh_session.execute(
-				self.__das_machine.keytool_update_begin_cmd(
-					self.__domain_name
-				)
-			))
-			
-			raise Exception("Unimplemented")
-			
-		finally:
-			any(self.__ssh_session.execute(
-				self.__das_machine.keytool_update_cacerts_cmd(
-					self.__domain_name,
-					alias,
-					self.__master_password
-				)
-			))
+		return self.__das_machine.cacerts_file_path
 		
 class KeystoreKeytool(Keytool):
 
 	"""
 	Keystore keytool.
 	"""
+	
+	def __init__(self, domain_name, ssh_session_fact, das_machine,
+			master_password):
+
+		super().__init__(
+			domain_name,
+			ssh_session_fact,
+			das_machine,
+			master_password
+		)
+		self.__das_machine = das_machine
+		
+	@property
+	def file_path(self):
+	
+		return self.__das_machine.keystore_file_path
 
