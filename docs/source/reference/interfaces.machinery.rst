@@ -166,36 +166,20 @@ Machinery interfaces.
       :return:
          The suitable command.
             
-   .. function:: keytool_update_begin_cmd(domain_name)
+   .. function:: keytool_put_begin_cmd(domain_name)
    
       # TODO ...
       
-   .. function:: keytool_update_cacerts_cmd(domain_name, alias, master_password)
+   .. function:: keytool_put_end_cmd(domain_name, alias, master_password, \
+      file_path)
    
       # TODO ...
       
-   .. function:: keytool_update_keystore_cmd(domain_name, alias, \
-      master_password)
+   .. function:: keytool_certificate_path(domain_name)
    
       # TODO ...
       
-   .. function:: keystore_cacert_path(domain_name)
-   
-      # TODO ...
-      
-   .. function:: keystore_admin_cert_path(domain_name)
-   
-      # TODO ...
-      
-   .. function:: keystore_admin_key_path(domain_name)
-   
-      # TODO ...
-      
-   .. function:: keystore_inst_cert_path(domain_name)
-   
-      # TODO ...
-      
-   .. function:: keystore_inst_key_path(domain_name)
+   .. function:: keytool_key_path(domain_name)
    
       # TODO ...
       

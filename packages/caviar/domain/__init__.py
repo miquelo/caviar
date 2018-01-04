@@ -208,7 +208,8 @@ class ManagedDomain:
 				name
 			)
 			
-	def create_cluster(self, name, cacerts=None, certkey=None):
+	def create_cluster(self, name, cacerts=None, certkey=None,
+			keystore_inst_alias=None):
 		
 		"""
 		Create a cluster.
@@ -219,6 +220,9 @@ class ManagedDomain:
 		   Iterator of CA :class:`Certificate` entries.
 		:param CertificateKey certkey:
 		   Certificate and private key used for SSL, if any.
+		:param str keystore_inst_alias:
+		   Alias of entry used by instance listener. `None` if it is
+		   using the default certificate and key.
 		"""
 		
 		self.__prepare_cluster(name)
@@ -422,13 +426,9 @@ class Environment:
 
 		return self.__engine.asadmin()
 		
-	def __cacerts(self, domain_name):
+	def __keytool(self):
 	
-		return self.__engine.cacerts(domain_name)
-		
-	def __keystore(self, domain_name):
-	
-		return self.__engine.keystore(domain_name)
+		return self.__engine.keytool()
 		
 	def domains(self):
 
@@ -451,8 +451,9 @@ class Environment:
 				data["restart-required"]
 			)
 			
-	def create_domain(self, name, admin_user, admin_password, cacerts=None,
-			admin_certkey=None, inst_certkey=None):
+	def create_domain(self, name, admin_user, admin_password,
+			cacerts_entries=None, keystore_entries=None,
+			keystore_admin_alias=None):
 	
 		"""
 		Create a domain.
@@ -463,12 +464,15 @@ class Environment:
 		   Administrator user name.
 		:param str admin_password:
 		   Administrator user password.
-		:param iter cacerts:
-		   Iterator of CA :class:`Certificate` entries.
-		:param CertificateKey admin_certkey:
-		   Administrator certificate and private key, if any.
-		:param CertificateKey inst_certkey:
-		   Instances certificate and private key, if any.
+		:param dict cacerts_entries:
+		   Dictionary of alias and :class:`Certificate` entries for CA
+		   certificates.
+		:param dict keystore_entries:
+		   Dictionary of alias and :class:`CertificateKey` entries for
+		   keystore.
+		:param str keystore_admin_alias:
+		   Alias of entry used by administrator listener. `None` if it is
+		   using the default certificate and key.
 		   
 		:rtype:
 		   Domain
@@ -504,6 +508,42 @@ class Environment:
 			admin_password
 		)
 		
+		if cacerts is not None:
+			for certificate in cacerts:
+				self.__keytool().cacerts(domain_data["name"]).put(
+					alias="caviar-{}".format("".join(
+						random.choice(string.ascii_lowercase + string.digits)
+						for _ in range(8)
+					)),
+					certificate=certificate
+				)
+		if admin_certkey is None:
+			self.__keytool().keystore(domain_data["name"]).self_signed(
+				alias="caviar-admin",
+				subject={
+					"CN": "admin.{}".format(domain_data["name"])
+				}
+			)
+		elif:
+			self.__keytool().keystore(domain_data["name"]).put(
+				alias="caviar-admin",
+				certificate=admin_certkey.certificate,
+				key=admin_certkey.key
+			)
+		if inst_certkey is None:
+			self.__keytool().keystore(domain_data["name"]).self_signed(
+				alias="caviar-inst",
+				subject={
+					"CN": "inst.{}".format(domain_data["name"])
+				}
+			)
+		elif:
+			self.__keytool().keystore(domain_data["name"]).put(
+				alias="caviar-inst",
+				certificate=inst_certkey.certificate,
+				key=inst_certkey.key
+			)
+			
 		self.__asadmin().restart_domain(
 			domain_data["name"]
 		)
@@ -512,26 +552,8 @@ class Environment:
 		# - Remove http-listener-1 on server-config
 		# - Remove http-listener-2 on server-config
 		
-		if cacerts is not None:
-			for cacert in cacerts:
-				self.__cacerts(name).put(
-					"".join(
-						random.choice(string.ascii_lowercase + string.digits)
-						for _ in range(8)
-					),
-					cacert.certificate
-				)
-		if admin_certkey is not None:
-			self.__keystore(name).put(
-				self.__keystore_admin_alias,
-				admin_certkey
-			)
-		if inst_certkey is not None:
-			self.__keystore(name).put(
-				self.__keystore_inst_alias,
-				inst_certkey
-			)
-			
+		# TODO Create SSL for admin-listener with "caviar-admin" alias
+		
 		self.__asadmin().stop_domain(
 			domain_data["name"]
 		)

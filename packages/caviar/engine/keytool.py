@@ -17,10 +17,8 @@
 
 class Keytool:
 
-	def __init__(self, domain_name, ssh_session_fact, das_machine,
-			master_password):
+	def __init__(self, ssh_session_fact, das_machine, master_password):
 			
-		self.__domain_name = domain_name
 		self.__ssh_session = ssh_session_fact.session(
 			das_machine.appserver_user,
 			das_machine.host
@@ -28,7 +26,49 @@ class Keytool:
 		self.__das_machine = das_machine
 		self.__master_password = master_password
 		
+	def __connection(self, domain_name, file_path):
+	
+		return KeytoolConnection(
+			domain_name,
+			file_path,
+			self.__ssh_session_fact.session(
+				self.__das_machine.appserver_user,
+				self.__das_machine.host
+			),
+			self.__das_machine,
+			self.__master_password
+		)
+		
+	def cacerts(self, domain_name):
+	
+		return self.__connection(
+			domain_name,
+			self.__das_machine.cacerts_file_path
+		)
+		
+	def keystore(self, domain_name):
+	
+		return self.__connection(
+			domain_name,
+			self.__das_machine.keystore_file_path
+		)
+		
+class KeytoolConnection:
+
+	def __init__(self, domain_name, file_path, ssh_session, das_machine,
+			master_password):
+			
+		self.__domain_name = domain_name
+		self.__file_path = file_path
+		self.__ssh_session = ssh_session
+		self.__das_machine = das_machine
+		self.__master_password = master_password
+		
 	def aliases(self):
+	
+		raise Exception("Unimplemented")
+		
+	def self_signed(self, alias, subject):
 	
 		raise Exception("Unimplemented")
 		
@@ -48,67 +88,39 @@ class Keytool:
 		
 		try:
 			any(self.__ssh_session.execute(
-				self.__das_machine.keytool_update_begin_cmd(
+				self.__das_machine.keytool_put_begin_cmd(
 					self.__domain_name
 				)
 			))
 			
-			raise Exception("Unimplemented")
+			with certificate.open() as certificate_file:
+				self.__ssh_session.copy(
+					certificate_file,
+					self.__das_machine.keytool_certificate_path(
+						self.__domain_name
+					)
+				)
 			
+			if key is not None:	
+				with key.open() as key_file:
+					self.__ssh_session.copy(
+						key_file,
+						self.__das_machine.keytool_key_path(
+							self.__domain_name
+						)
+					)
+				
 		finally:
 			any(self.__ssh_session.execute(
-				self.__das_machine.keytool_update_end_cmd(
-					self.__domain_name,
-					alias,
-					self.__master_password
+				self.__das_machine.keytool_put_end_cmd(
+					domain_name=self.__domain_name,
+					alias=alias,
+					master_password=self.__master_password,
+					file_path=self.__file_path
 				)
 			))
 			
 	def remove(self, alias):
 	
 		raise Exception("Unimplemented")
-		
-class CACertificatesKeytool(Keytool):
-
-	"""
-	CA certificates keytool.
-	"""
-	
-	def __init__(self, domain_name, ssh_session_fact, das_machine,
-			master_password):
-
-		super().__init__(
-			domain_name,
-			ssh_session_fact,
-			das_machine,
-			master_password
-		)
-		self.__das_machine = das_machine
-		
-	@property
-	def file_path(self):
-	
-		return self.__das_machine.cacerts_file_path
-		
-class KeystoreKeytool(Keytool):
-
-	"""
-	Keystore keytool.
-	"""
-	
-	def __init__(self, domain_name, ssh_session_fact, das_machine,
-			master_password):
-
-		super().__init__(
-			domain_name,
-			ssh_session_fact,
-			das_machine,
-			master_password
-		)
-		self.__das_machine = das_machine
-		
-	@property
-	def file_path(self):
-	
-		return self.__das_machine.keystore_file_path
 

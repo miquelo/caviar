@@ -118,19 +118,9 @@ class Engine:
 			self.__master_password
 		)
 		
-	def cacerts(self, domain_name):
+	def keytool(self):
 	
-		return caviar.engine.keytool.CACertificatesKeytool(
-			domain_name,
-			self.__ssh_session_fact,
-			self.__das_machine(),
-			self.__master_password
-		)
-		
-	def keystore(self, domain_name):
-	
-		return caviar.engine.keytool.KeystoreKeytool(
-			domain_name,
+		return caviar.engine.keytool.Keytool(
 			self.__ssh_session_fact,
 			self.__das_machine(),
 			self.__master_password
